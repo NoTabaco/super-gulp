@@ -20,7 +20,11 @@
   "devDependencies": {
     "@types/gulp": "^4.0.9",
     "gulp": "^4.0.2",
+    "gulp-pug": "^5.0.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "del": "^6.0.0"
   }
 }
