@@ -1,5 +1,7 @@
 import del from "del";
 import { series, src, dest, parallel, watch } from "gulp";
+import autoprefixer from "gulp-autoprefixer";
+import miniCSS from "gulp-csso";
 import image from "gulp-image";
 import pug from "gulp-pug";
 // @ts-ignore
@@ -39,6 +41,8 @@ const pugTask = () =>
 const styles = () =>
   src(routes.scss.src)
     .pipe(sass().on("error", sass.logError))
+    .pipe(autoprefixer())
+    .pipe(miniCSS())
     .pipe(dest(routes.scss.dest));
 
 const assets = parallel(pugTask, styles);

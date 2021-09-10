@@ -19,10 +19,14 @@
   "homepage": "https://github.com/NoTabaco/super-gulp#readme",
   "devDependencies": {
     "@types/gulp": "^4.0.9",
+    "@types/gulp-autoprefixer": "^0.0.33",
+    "@types/gulp-csso": "^4.0.1",
     "@types/gulp-image": "^4.3.1",
     "@types/gulp-sass": "^5.0.0",
     "@types/sass": "^1.16.1",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-csso": "^4.0.1",
     "gulp-image": "^6.2.1",
     "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.0.0",
@@ -33,5 +37,8 @@
   },
   "dependencies": {
     "del": "^6.0.0"
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
