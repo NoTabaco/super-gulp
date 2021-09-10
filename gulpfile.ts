@@ -3,6 +3,7 @@ import del from "del";
 import { series, src, dest, parallel, watch } from "gulp";
 import autoprefixer from "gulp-autoprefixer";
 import miniCSS from "gulp-csso";
+import ghPages from "gulp-gh-pages";
 import image from "gulp-image";
 import pug from "gulp-pug";
 import uglify from "gulp-uglify";
@@ -39,7 +40,7 @@ const routes = {
   },
 };
 
-const clean = async () => await del(["dist"]);
+const clean = async () => await del(["dist", ".publish"]);
 
 const imgTask = () =>
   src(routes.img.src).pipe(image()).pipe(dest(routes.img.dest));
@@ -79,6 +80,10 @@ const watchTask = () => {
   watch([routes.ts.watch], ts);
 };
 
-const postDev = parallel(webserver, watchTask);
+const gh = () => src("dist/**/*").pipe(ghPages());
 
-export const dev = series(prepare, assets, postDev);
+const live = parallel(webserver, watchTask);
+
+export const build = series(prepare, assets);
+export const dev = series(build, live);
+export const deploy = series(build, gh, clean);
